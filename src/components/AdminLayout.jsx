@@ -55,9 +55,9 @@ const AdminLayout = ({ children, toggleLang }) => {
               icon={<CDS.Apple />}
              />
              <SideNav.NavItem
-              id="viewOrder"
+              id="view-order"
               as={Link}
-              to="/viewOrder"
+              to="/view-order"
               label="View Order"
               itemKey="/item2"
               icon={<CDS.Blog1 />}
