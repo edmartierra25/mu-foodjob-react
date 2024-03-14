@@ -3,25 +3,44 @@ import CardWrapper from 'src/components/CardWrapper';
 import MenuItem from 'src/components/MenuItem';
 
 const menuItems = [{
-    name: "MenuItem1"
+    name: "MenuItem1",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
 }, {
-    name: "MenuItem2"
+    name: "MenuItem2",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem3"
+    name: "MenuItem3",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem4"
+    name: "MenuItem4",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem5"
+    name: "MenuItem5",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem6"
+    name: "MenuItem6",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem7"
+    name: "MenuItem7",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem8"
+    name: "MenuItem8",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem9"
+    name: "MenuItem9",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 }, {
-    name: "MenuItem10"
+    name: "MenuItem10",
+    src: 'http://localhost:3001/images/menus/classic.jpg'
+
 },]
 
 const Menu = ({ title }) => (
@@ -30,7 +49,7 @@ const Menu = ({ title }) => (
         <P>Content for {title} goes here.</P>
         <CardWrapper maxWidth='100%'>
             <Stack direction="row" justify="space-around" >
-                {menuItems.map((item) => <MenuItem name={item.name} />)}
+                {menuItems.map((item) => <MenuItem {...item} />)}
             </Stack>
         </CardWrapper>
     </Stack>
