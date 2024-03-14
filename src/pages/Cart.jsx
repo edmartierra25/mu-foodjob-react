@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { H1, P, Stack, colors, Button } from '@manulife/mux';
+import { H1, P, Stack, colors, Button, PlusMinus } from '@manulife/mux';
 import MenuItem from 'src/components/MenuItem';
 import * as CDS from '@manulife/mux-cds-icons';
 import { useNavigate } from 'react-router-dom';
@@ -34,15 +34,9 @@ const Cart = () => {
     navigate('/view-restaurants');
   };
 
-  const handleModifyItem = (action, index) => {
-    if (action === "add") {
-      cart[index].count += 1;
-    } else {
-      cart[index].count -= 1;
-    }
-
+  const handleSetCount = (newValue, index) => {
+    cart[index].count = newValue;
     setCart([...cart]);
-    console.log("handleModifyItem", action);
   }
 
   return (
@@ -54,11 +48,12 @@ const Cart = () => {
           cart.map((item, index) => {
             return (
             <Stack key={item.id} direction="row" gap="10rem" style={{ paddingLeft: "10px" }}>
-              <MenuItem imageUrl={item.product_imageUrl}/>
+              <Stack direction="row">
+                <MenuItem imageUrl={item.product_imageUrl}/>
+                <P>{item.product_name}</P>
+              </Stack>
               <Stack direction="row" align="flex-end">
-                <CDS.ButtonMinusIcon onClick={() =>handleModifyItem("minus", index)} style={{ fontSize: "60px", cursor: "pointer" }} />
-                <Button variant={Button.VARIANT.SECONDARY} disabled small style={{ backgroundColor: colors.light_grey }}>{item.count}</Button>
-                <CDS.ButtonPlusIcon onClick={() => handleModifyItem("add", index)} style={{ fontSize: "60px", cursor: "pointer" }} />
+                <PlusMinus value={item.count} onChange={(newValue) => handleSetCount(newValue, index)} />
               </Stack>
             </Stack>
             )
