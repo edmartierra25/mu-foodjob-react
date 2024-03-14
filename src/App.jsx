@@ -5,6 +5,7 @@ import { LANG, MuxProvider } from '@manulife/mux';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Order from './pages/Order';
+import Menu from './pages/Menu';
 
 import './App.css';
 
@@ -22,6 +23,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/view-order" element={<Order title="Order"/>} />
+            <Route path="/view-menu" element={<Menu title="Menu"/>} />
+
           </Routes>
         </Layout>
       </BrowserRouter>
