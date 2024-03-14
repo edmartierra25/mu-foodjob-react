@@ -1,0 +1,6 @@
+{
+  "extends": ["@manulife/eslint-config-react"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+  },
+}

@@ -1,0 +1,34 @@
+{
+  "name": "mux-vite-template",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Starter template for React using Vite and MUX.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --port 3000",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "serve": "vite preview --port 3000",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@manulife/mux": "latest",
+    "@manulife/mux-cds-icons": "latest",
+    "@manulife/mux-logos": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "styled-components": "^5.3.11"
+  },
+  "devDependencies": {
+    "@manulife/eslint-config-react": "^3.0.2",
+    "@manulife/prettier-config": "^2.0.11",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "vite": "^5.1.5"
+  }
+}
