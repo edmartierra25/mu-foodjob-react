@@ -7,7 +7,7 @@ import {
   useSkipLinks,
   UtilityHeader,
 } from '@manulife/mux';
-import { PartlySunny, Sunny } from '@manulife/mux-cds-icons';
+import * as CDS from '@manulife/mux-cds-icons';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Layout = ({ children, toggleLang }) => {
@@ -47,50 +47,14 @@ const Layout = ({ children, toggleLang }) => {
         >
           <SideNav.Section id="personal">
             <SideNav.NavItem
-              id="item1"
+              id="menu"
               as={Link}
-              to="/item1"
-              label="Item 1"
+              to="/menu"
+              label="Menu"
               itemKey="/item1"
-              icon={<Sunny />}
+              icon={<CDS.Apple />}
             >
-              <SideNav.Dropdown
-                id="item1_1"
-                as="button"
-                itemKey="/item1_1"
-                label="Item 1.1"
-              >
-                <SideNav.SubNavItem
-                  id="item1_1_1"
-                  as={Link}
-                  to="/item1_1_1"
-                  itemKey="/item1_1_1"
-                  label="Item 1.1.1"
-                />
-                <SideNav.SubNavItem
-                  id="item1_1_2"
-                  as={Link}
-                  to="/item1_1_2"
-                  itemKey="/item1_1_2"
-                  label="Item 1.1.2"
-                />
-              </SideNav.Dropdown>
-              <SideNav.SubNavItem
-                id="item1_2"
-                as={Link}
-                to="/item1_2"
-                itemKey="/item1_2"
-                label="Item 1.2"
-              />
             </SideNav.NavItem>
-            <SideNav.NavItem
-              id="item2"
-              as={Link}
-              to="/item2"
-              label="Item 2"
-              itemKey="/item2"
-              icon={<PartlySunny />}
-            />
           </SideNav.Section>
         </SideNav>
       }
