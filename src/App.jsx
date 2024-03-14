@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LANG, MuxProvider } from '@manulife/mux';
 
 import Layout from './components/Layout';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Restaurant from './pages/Restaurants';
 import Menu from './pages/Menu';
 
@@ -24,7 +24,7 @@ const App = () => {
       <BrowserRouter>
         <Layout toggleLang={toggleLang}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Restaurant title="Restaurant" />} />
             <Route path="/view-restaurants" element={<Restaurant title="Order"/>} />
             <Route path="/view-menu" element={<Menu title="Menu"/>} />
             <Route path="/view-cart" element={<Cart title="Cart"/>} />
