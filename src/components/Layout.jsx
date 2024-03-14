@@ -64,6 +64,14 @@ const Layout = ({ children, toggleLang }) => {
               itemKey="/view-menu"
               icon={<CDS.Cart />}
             />
+            <SideNav.NavItem
+              id="view-cart"
+              as={Link}
+              to="/view-cart"
+              label="View Cart"
+              itemKey="/view-cart"
+              icon={<CDS.Cart />}
+            />
           </SideNav.Section>
         </SideNav>
       }
