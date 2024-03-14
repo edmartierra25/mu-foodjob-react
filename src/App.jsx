@@ -24,8 +24,8 @@ const App = () => {
       <BrowserRouter>
         <Layout toggleLang={toggleLang}>
           <Routes>
-            <Route path="/" element={<Restaurant title="Restaurant" />} />
-            <Route path="/view-restaurants" element={<Restaurant title="Order"/>} />
+            <Route path="/" element={<Restaurant title="Restaurant"/>} />
+            <Route path="/view-restaurants" element={<Restaurant title="Restaurant"/>} />
             <Route path="/view-menu" element={<Menu title="Menu"/>} />
             <Route path="/view-cart" element={<Cart title="Cart"/>} />
             <Route path="/add-to-cart" element={<AddToCart title="Add to Cart" />} />

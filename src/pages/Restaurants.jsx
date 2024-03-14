@@ -1,43 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { H1, P, Stack } from '@manulife/mux';
+import axios from  "axios";
+import { useSearchParams } from 'react-router-dom';
 
 import RestaurantItem from 'src/components/restaurant/RestaurantItem';
 
 const Restaurant = () => {
-  const [restaurants, setRestaurants] = useState([
-    {
-      id: 1,
-      name: 'Kuya Z - Restaurant',
-      imageUrl: 'http://localhost:3001/images/restaurants/mang-inasal.jfif',
-      address:
-        'Ground Flr, Kroma Tower, Dela Rosa Street, Legaspi Village, Makati, Metro Manila',
-      averageRatings: 1,
-    },
-    {
-      id: 2,
-      name: 'Kuya Z - Restaurant',
-      imageUrl: 'http://localhost:3001/images/restaurants/kuya-z.jpg',
-      address:
-        'Ground Flr, Kroma Tower, Dela Rosa Street, Legaspi Village, Makati, Metro Manila',
-      averageRatings: 3,
-    },
-    {
-      id: 3,
-      name: 'Kuya Z - Restaurant',
-      imageUrl: 'http://localhost:3001/images/restaurants/mang-inasal.jfif',
-      address:
-        'Ground Flr, Kroma Tower, Dela Rosa Street, Legaspi Village, Makati, Metro Manila',
-      averageRatings: 3,
-    },
-    {
-      id: 4,
-      name: 'Kuya Z - Restaurant',
-      imageUrl: 'http://localhost:3001/images/restaurants/mang-inasal.jfif',
-      address:
-        'Ground Flr, Kroma Tower, Dela Rosa Street, Legaspi Village, Makati, Metro Manila',
-      averageRatings: 3,
-    },
-  ]);
+  const [restaurants, setRestaurants] = useState([]);
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    axios.get('http://localhost:3001/restaurants').then(response => {
+      setRestaurants([...response.data]);
+    });
+    console.log(searchParams.get('restaurants'), "searchParams");
+  }, []);
 
   return (
     <Stack align="flex-start">
