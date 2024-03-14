@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Restaurant from './pages/Restaurants';
 import Menu from './pages/Menu';
+import Cart from './pages/Cart';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/view-restaurants" element={<Restaurant title="Order"/>} />
             <Route path="/view-menu" element={<Menu title="Menu"/>} />
+            <Route path="/view-cart" element={<Cart title="Cart"/>} />
           </Routes>
         </Layout>
       </BrowserRouter>
