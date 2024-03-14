@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Restaurant from './pages/Restaurants';
 import Menu from './pages/Menu';
+import AddToCart from './pages/AddToCart';
 
 import './App.css';
 
@@ -22,8 +23,9 @@ const App = () => {
         <Layout toggleLang={toggleLang}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/view-restaurants" element={<Restaurant title="Order"/>} />
-            <Route path="/view-menu" element={<Menu title="Menu"/>} />
+            <Route path="/view-restaurants" element={<Restaurant title="Order" />} />
+            <Route path="/view-menu" element={<Menu title="Menu" />} />
+            <Route path="/add-to-cart" element={<AddToCart title="Add to Cart" />} />
           </Routes>
         </Layout>
       </BrowserRouter>
