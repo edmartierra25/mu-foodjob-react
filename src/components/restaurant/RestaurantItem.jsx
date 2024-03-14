@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, colors, H1, P, Stack } from '@manulife/mux';
-
+import { useNavigate } from 'react-router-dom';
 import StarRating from '../commons/StarRating';
 
 const RestaurantItem = ({ restaurant }) => {
+  const navigate = useNavigate();
   const handleGotoProducts = (restaurantId) => {
     console.log('handleGotoProducts, restaurantId: ', restaurantId);
+    navigate('/view-menu?restaurant_id=' + restaurantId);
   };
 
   return (

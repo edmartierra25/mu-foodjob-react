@@ -54,16 +54,6 @@ const Layout = ({ children, toggleLang }) => {
               itemKey="/view-restaurants"
               icon={<CDS.Apple />}
             />
-            {/* TODO: to be removed because menu is expected to show after clicking
-            a restaurant */}
-            <SideNav.NavItem
-              id="view-menu"
-              as={Link}
-              to="/view-menu"
-              label="View Menu"
-              itemKey="/view-menu"
-              icon={<CDS.Cart />}
-            />
             <SideNav.NavItem
               id="view-cart"
               as={Link}

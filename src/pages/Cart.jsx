@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { H1, P, Stack, colors, Button } from '@manulife/mux';
 import MenuItem from 'src/components/MenuItem';
 import * as CDS from '@manulife/mux-cds-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -26,20 +28,37 @@ const Cart = () => {
   const handleConfirmCart = () => {
     console.log("handleConfirmCart");
   };
+
+  const handleCancelCart = () => {
+    console.log("handleCancelCart");
+    navigate('/view-restaurants');
+  };
+
+  const handleModifyItem = (action, index) => {
+    if (action === "add") {
+      cart[index].count += 1;
+    } else {
+      cart[index].count -= 1;
+    }
+
+    setCart([...cart]);
+    console.log("handleModifyItem", action);
+  }
+
   return (
     <Stack direction="column" align="flex-between">
       <H1>Kuya Z - Restaurant</H1>
       <hr />
       <Stack direction="column" align="flex-start">
         {
-          cart.map(item => {
+          cart.map((item, index) => {
             return (
             <Stack key={item.id} direction="row" gap="10rem" style={{ paddingLeft: "10px" }}>
-              <MenuItem src={item.product_imageUrl}/>
+              <MenuItem imageUrl={item.product_imageUrl}/>
               <Stack direction="row" align="flex-end">
-                <CDS.ButtonMinusIcon style={{ fontSize: "60px", cursor: "pointer" }} />
+                <CDS.ButtonMinusIcon onClick={() =>handleModifyItem("minus", index)} style={{ fontSize: "60px", cursor: "pointer" }} />
                 <Button variant={Button.VARIANT.SECONDARY} disabled small style={{ backgroundColor: colors.light_grey }}>{item.count}</Button>
-                <CDS.ButtonPlusIcon style={{ fontSize: "60px", cursor: "pointer" }} />
+                <CDS.ButtonPlusIcon onClick={() => handleModifyItem("add", index)} style={{ fontSize: "60px", cursor: "pointer" }} />
               </Stack>
             </Stack>
             )
@@ -47,7 +66,7 @@ const Cart = () => {
         }
         <Stack direction="row" align="center" style={{ paddingLeft: "10rem" }}>
           <Button variant={Button.VARIANT.PRIMARY} small onClick={handleConfirmCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Confirm</Button>
-          <Button variant={Button.VARIANT.SECONDARY} small onClick={handleConfirmCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Cancel</Button>
+          <Button variant={Button.VARIANT.SECONDARY} small onClick={handleCancelCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Cancel</Button>
         </Stack>
       </Stack>
     </Stack>
