@@ -57,7 +57,6 @@ const Layout = ({ children, toggleLang }) => {
             <SideNav.NavItem
               id="view-restaurants"
               as={Link}
-<<<<<<< Updated upstream
               to="/view-restaurants"
               label="View Restaurants"
               itemKey="/view-restaurants"
@@ -71,14 +70,6 @@ const Layout = ({ children, toggleLang }) => {
               itemKey="/view-cart"
               icon={<CDS.Cart />}
             />
-=======
-              to="/menu"
-              label="Menu"
-              itemKey="/item2"
-              icon={<CDS.Apple />}
-             />
-             
->>>>>>> Stashed changes
           </SideNav.Section>
         </SideNav>
       }

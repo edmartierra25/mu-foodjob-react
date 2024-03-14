@@ -10,8 +10,8 @@ import Menu from './pages/Menu';
 import AddToCart from './pages/AddToCart';
 import Cart from './pages/Cart';
 // import AdminLayout from './components/AdminLayout';
-import Home from './pages/Home';
-import Order from './pages/Order';
+// import Home from './pages/Home';
+// import Order from './pages/Order';
 import ManageOrder from './pages/ManageOrder';
 import ManageStore from './pages/ManageStore';
 
