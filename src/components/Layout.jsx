@@ -54,6 +54,14 @@ const Layout = ({ children, toggleLang }) => {
               itemKey="/view-orders"
               icon={<CDS.Apple />}
             />
+            <SideNav.NavItem
+              id="view-menu"
+              as={Link}
+              to="/view-menu"
+              label="View Menu"
+              itemKey="/view-menu"
+              icon={<CDS.Cart />}
+            />
           </SideNav.Section>
         </SideNav>
       }
