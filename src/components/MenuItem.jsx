@@ -11,6 +11,7 @@ const itemStyle = {
   maxWidth: '200px',
   cursor: 'pointer',
   flex: '1 0 calc(100% / 4)', // limits the number of elements per line
+  height: '200px'
 };
 
 const itemNameStyle = {
@@ -27,7 +28,7 @@ const MenuItem = ({ name, imageUrl }) => {
   };
 
   return (
-    <Stack style={itemStyle} gap="0" onClick={handleGotoProduct}>
+    <Stack style={itemStyle} gap="0" onClick={handleGotoProduct} justify="center">
       <div>
         <img src={imageUrl} alt="Menu" style={imageStyle} />
       </div>
