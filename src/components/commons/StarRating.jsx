@@ -1,15 +1,16 @@
-import { StarBorder } from '@manulife/mux-cds-icons';
+import { StarBorder, StarFilled } from '@manulife/mux-cds-icons';
+import { colors } from '@manulife/mux';
 
-const StarRating = () => {
+const StarRating = ({ ratings = 0 }) => {
   const numberOfStar = 4;
-
+  console.log("StarRating", ratings);
   return (
     <>
       {
         [...Array(numberOfStar)].map((_item, index) => {
-          return (
-            <StarBorder style={{ cursor: "pointer", color: colors.m_green, fontSize: "45px" }}/>
-          )
+          return index < ratings ?
+              <StarFilled style={{ color: colors.m_green, fontSize: "45px" }}/>
+            : <StarBorder style={{ color: colors.m_green, fontSize: "45px" }}/>
         })
       }
     </>

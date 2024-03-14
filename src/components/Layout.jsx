@@ -47,11 +47,11 @@ const Layout = ({ children, toggleLang }) => {
         >
           <SideNav.Section id="personal">
             <SideNav.NavItem
-              id="view-orders"
+              id="view-restaurants"
               as={Link}
               to="/view-order"
-              label="View Orders"
-              itemKey="/view-orders"
+              label="View Restaurants"
+              itemKey="/view-restaurants"
               icon={<CDS.Apple />}
             />
           </SideNav.Section>
