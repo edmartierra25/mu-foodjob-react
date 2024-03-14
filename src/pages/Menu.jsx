@@ -45,8 +45,9 @@ const menuItems = [{
 
 const Menu = ({ title }) => (
     <Stack align="flex-start">
-        <H1>LOGO HERE</H1>
-        <P>Content for {title} goes here.</P>
+        <img src='http://localhost:3001/assets/horizontal-logo.png' alt='logo'/>
+        <H1>Lorem Ipsum + title: {title}</H1>
+        <P>{`"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."`}</P>
         <CardWrapper maxWidth='100%'>
             <Stack direction="row" justify="space-around" >
                 {menuItems.map((item) => <MenuItem {...item} />)}
