@@ -13,10 +13,15 @@ const itemNameStyle = {
     color: 'white',
 }
 
+const imageStyle = {
+    maxWidth: '120px'
+}
 
-const MenuItem = ({ name }) => (
+
+const MenuItem = ({ name, src }) => (
     <Stack style={itemStyle} gap="0">
-        <div>MenuImage</div>
+        <div><img
+            src={src} alt='Menu' style={imageStyle} /></div>
         <div style={itemNameStyle}><strong>{name.toUpperCase()}</strong></div>
     </Stack>
 )
