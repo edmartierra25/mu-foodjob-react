@@ -1,8 +1,9 @@
 import React from 'react';
 import { Stack } from '@manulife/mux';
-import { useEffect } from 'react';
-import axios from "axios";
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
+// import axios from "axios";
+// import { useSearchParams } from 'react-router-dom';
 
 const itemStyle = {
   padding: '10px 10px',
@@ -23,8 +24,11 @@ const imageStyle = {
 };
 
 const MenuItem = ({ name, imageUrl }) => {
+
+  const navigate = useNavigate();
+
   const handleGotoProduct = () => {
-    console.log("handleGotoProduct");
+    navigate('/add-to-cart');
   };
 
   return (
