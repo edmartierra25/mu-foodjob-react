@@ -70,7 +70,24 @@ const Layout = ({ children, toggleLang }) => {
               itemKey="/view-cart"
               icon={<CDS.Cart />}
             />
+            <SideNav.NavItem
+              id="manage-order"
+              as={Link}
+              to="/manage-order"
+              label="Manage Order"
+              itemKey="/manage-order"
+              icon={<CDS.Cart />}
+            />
+            <SideNav.NavItem
+              id="manage-store"
+              as={Link}
+              to="/manage-store"
+              label="Manage Store"
+              itemKey="/manage-store"
+              icon={<CDS.Retail />}
+            />
           </SideNav.Section>
+        
         </SideNav>
       }
       isSideNavOpen={isSideNavOpen}

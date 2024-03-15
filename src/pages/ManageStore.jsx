@@ -4,12 +4,19 @@ import * as CDS from '@manulife/mux-cds-icons';
 const ManageStore = () => {
     const mockData = 
     [
-     {storeID: "#0001", contact:"09124551239", restaurant: "Kuya Z", orderDate: "01-23-2024", admin: "Rita Ora"},
-     {storeID: "#0002", contact:"09124551239", restaurant: "Mang Inasal", orderDate: "02-23-2021", admin: "Heart Mill"},
-     {storeID: "#0003", contact:"09124551239", restaurant: "Sarsa", orderDate: "10-13-1998", admin: "Nirvana"},
-     {storeID: "#0004", contact:"09124551239", restaurant: "Tres", orderDate: "01-03-2002", admin: "ACDC"},
-     {storeID: "#0005", contact:"09124551239", restaurant: "Giligans", orderDate: "02-14-2011", admin: "IV Of Spades" },
+     {storeID: "#0001", contact:"09124551231", restaurant: "Kuya Z", orderDate: "01-23-2024", admin: "Rita Ora"},
+     {storeID: "#0002", contact:"09121411232", restaurant: "Mang Inasal", orderDate: "02-23-2021", admin: "Heart Mill"},
+     {storeID: "#0003", contact:"09124551133", restaurant: "Sarsa", orderDate: "10-13-1998", admin: "Nirvana"},
+     {storeID: "#0004", contact:"09121311234", restaurant: "Tres", orderDate: "01-03-2002", admin: "ACDC"},
+     {storeID: "#0005", contact:"09123251235", restaurant: "Giligans", orderDate: "02-14-2011", admin: "IV Of Spades" },
     ];
+
+    const stackStyle = {
+        height: '8rem',
+        marginBottom: '1.5rem',
+        padding: '1rem',
+        width: '100%',  
+      };
 
     const tableRows = mockData.map((data) => ({
         storeID: {
@@ -34,10 +41,11 @@ const ManageStore = () => {
         action: {
             sortValue: data.action,
             label: (
-                <Stack direction="row" justify="flex-end">
-                    <Button >EDIT</Button>
-                    <Button >DELETE</Button>
+                <Stack small direction="row" align="flex-start" style={stackStyle} >
+                    <Button variant={Button.VARIANT.PRIMARY}>EDIT</Button>
+                    <Button variant={Button.VARIANT.PRIMARY}>DELETE</Button>
                 </Stack>),
+                
         },
     }));
 
@@ -83,9 +91,8 @@ const ManageStore = () => {
                     {
                         id: 'action',
                         label: 'Action',
-                        maxWidth: '20px',
                         textAlign: 'center',
-                        isSortable: true
+                        isSortable: false
                     }, ]} 
                 rows={tableRows} />
         </Stack>
