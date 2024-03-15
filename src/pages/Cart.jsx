@@ -37,6 +37,11 @@ const Cart = () => {
       <hr />
       <Stack direction="column" align="flex-start">
         {
+          cart.length === 0 && (
+            <P>There is no item here yet.</P>
+          )
+        }
+        {
           cart.map((item, index) => {
             return (
             <Stack key={item.id} direction="row" gap="10rem" style={{ paddingLeft: "10px" }}>
@@ -51,10 +56,14 @@ const Cart = () => {
             )
           })
         }
-        <Stack direction="row" align="center" style={{ paddingLeft: "10rem" }}>
-          <Button variant={Button.VARIANT.PRIMARY} small onClick={handleConfirmCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Confirm</Button>
-          <Button variant={Button.VARIANT.SECONDARY} small onClick={handleCancelCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Cancel</Button>
-        </Stack>
+        {
+          cart.length > 0 && (
+            <Stack direction="row" align="center" style={{ paddingLeft: "10rem" }}>
+              <Button variant={Button.VARIANT.PRIMARY} small onClick={handleConfirmCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Confirm</Button>
+              <Button variant={Button.VARIANT.SECONDARY} small onClick={handleCancelCart} style={{ borderRaidius: "50%", backgroundColor: "" }}>Cancel</Button>
+            </Stack>
+          )
+        }
       </Stack>
     </Stack>
   );
