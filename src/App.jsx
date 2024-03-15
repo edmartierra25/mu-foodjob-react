@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LANG, MuxProvider } from '@manulife/mux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from './components/Layout';
-// import Home from './pages/Home';
-import Restaurant from './pages/Restaurants';
-import Menu from './pages/Menu';
-
 import AddToCart from './pages/AddToCart';
 import Cart from './pages/Cart';
 // import AdminLayout from './components/AdminLayout';
@@ -14,13 +10,18 @@ import Cart from './pages/Cart';
 // import Order from './pages/Order';
 import ManageOrder from './pages/ManageOrder';
 import ManageStore from './pages/ManageStore';
-
-
+import Menu from './pages/Menu';
+// import Home from './pages/Home';
+import Restaurant from './pages/Restaurants';
 
 import './App.css';
 
+import Login from './pages/Login';
+
 const App = () => {
   const [lang, setLang] = useState(LANG.EN_CA);
+  const [isLogin, setIsLogin] = useState(false);
+  const [role, setRole] = useState('admin');
 
   function toggleLang() {
     setLang(lang === LANG.EN_CA ? LANG.FR_CA : LANG.EN_CA);
@@ -29,17 +30,50 @@ const App = () => {
   return (
     <MuxProvider langProvider={{ lang }}>
       <BrowserRouter>
-        <Layout toggleLang={toggleLang}>
+        {!isLogin ? (
           <Routes>
-            <Route path="/" element={<Restaurant title="Restaurant"/>} />
-            <Route path="/view-restaurants" element={<Restaurant title="Restaurant"/>} />
-            <Route path="/view-menu" element={<Menu title="Menu"/>} />
-            <Route path="/view-cart" element={<Cart title="Cart"/>} />
-            <Route path="/add-to-cart" element={<AddToCart title="Add to Cart" />} />
-            <Route path="/manage-order" element={<ManageOrder title="ManageOrder"/>} />
-            <Route path="/manage-store" element={<ManageStore title="ManageStore"/>} />
+            <Route
+              path="/"
+              element={<Login setIsLogin={setIsLogin} setRole={setRole} />}
+            />
+            <Route
+              path="/login"
+              element={<Login setIsLogin={setIsLogin} setRole={setRole} />}
+            />
           </Routes>
-        </Layout>
+        ) : (
+          <Layout toggleLang={toggleLang} role={role}>
+            <Routes>
+              {role === 'user' && (
+                <>
+                  <Route path="/" element={<Restaurant title="Restaurant" />} />
+                  <Route
+                    path="/view-restaurants"
+                    element={<Restaurant title="Restaurant" />}
+                  />
+                  <Route path="/view-menu" element={<Menu title="Menu" />} />
+                  <Route path="/view-cart" element={<Cart title="Cart" />} />
+                  <Route
+                    path="/add-to-cart"
+                    element={<AddToCart title="Add to Cart" />}
+                  />
+                </>
+              )}
+              {role === 'admin' && (
+                <>
+                  <Route
+                    path="/manage-order"
+                    element={<ManageOrder title="ManageOrder" />}
+                  />
+                  <Route
+                    path="/manage-store"
+                    element={<ManageStore title="ManageStore" />}
+                  />
+                </>
+              )}
+            </Routes>
+          </Layout>
+        )}
       </BrowserRouter>
     </MuxProvider>
   );

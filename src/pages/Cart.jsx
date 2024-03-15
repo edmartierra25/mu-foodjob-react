@@ -12,6 +12,8 @@ const Cart = () => {
 
   const handleConfirmCart = () => {
     console.log("handleConfirmCart");
+    alert("Orders has been successfully submitted!");
+    navigate('/view-restaurants');
   };
 
   const handleCancelCart = () => {

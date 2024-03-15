@@ -10,7 +10,7 @@ import {
 import * as CDS from '@manulife/mux-cds-icons';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const Layout = ({ children, toggleLang }) => {
+const Layout = ({ children, toggleLang, role }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -25,8 +25,10 @@ const Layout = ({ children, toggleLang }) => {
     <MuxLayout
       header={
         <UtilityHeader skipLinks={<SkipLinks {...skipLinksProps} />}>
-          <UtilityHeader.SignIn />
-          <UtilityHeader.Lang onClick={toggleLang} />
+          <UtilityHeader.HeaderButton label={role.toUpperCase()} icon={<CDS.Person />}>
+            <UtilityHeader.MenuItem label="Manage your Manulife ID" />
+            <UtilityHeader.MenuItem label="Sign Out" />
+          </UtilityHeader.HeaderButton>
         </UtilityHeader>
       }
       footer={<Footer ref={footerRef} />}
@@ -46,48 +48,55 @@ const Layout = ({ children, toggleLang }) => {
           skipLinks={<SkipLinks {...skipLinksProps} />}
         >
           <SideNav.Section id="personal">
-          <SideNav.NavItem
+            <SideNav.NavItem
               id="home"
               as={Link}
               to="/home"
               label="Home"
               itemKey="/item1"
               icon={<CDS.Home1 />}
-             />
-            <SideNav.NavItem
-              id="view-restaurants"
-              as={Link}
-              to="/view-restaurants"
-              label="View Restaurants"
-              itemKey="/view-restaurants"
-              icon={<CDS.Apple />}
             />
-            <SideNav.NavItem
-              id="view-cart"
-              as={Link}
-              to="/view-cart"
-              label="View Cart"
-              itemKey="/view-cart"
-              icon={<CDS.Cart />}
-            />
-            <SideNav.NavItem
-              id="manage-order"
-              as={Link}
-              to="/manage-order"
-              label="Manage Order"
-              itemKey="/manage-order"
-              icon={<CDS.Cart />}
-            />
-            <SideNav.NavItem
-              id="manage-store"
-              as={Link}
-              to="/manage-store"
-              label="Manage Store"
-              itemKey="/manage-store"
-              icon={<CDS.Retail />}
-            />
+            {role === 'user' && (
+              <>
+                <SideNav.NavItem
+                  id="view-restaurants"
+                  as={Link}
+                  to="/view-restaurants"
+                  label="View Restaurants"
+                  itemKey="/view-restaurants"
+                  icon={<CDS.Apple />}
+                />
+                <SideNav.NavItem
+                  id="view-cart"
+                  as={Link}
+                  to="/view-cart"
+                  label="View Cart"
+                  itemKey="/view-cart"
+                  icon={<CDS.Cart />}
+                />
+              </>
+            )}
+            {role === 'admin' && (
+              <>
+                <SideNav.NavItem
+                  id="manage-order"
+                  as={Link}
+                  to="/manage-order"
+                  label="Manage Order"
+                  itemKey="/manage-order"
+                  icon={<CDS.Cart />}
+                />
+                <SideNav.NavItem
+                  id="manage-store"
+                  as={Link}
+                  to="/manage-store"
+                  label="Manage Store"
+                  itemKey="/manage-store"
+                  icon={<CDS.Retail />}
+                />
+              </>
+            )}
           </SideNav.Section>
-        
         </SideNav>
       }
       isSideNavOpen={isSideNavOpen}

@@ -13,10 +13,12 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "@json2csv/plainjs": "^7.0.6",
     "@manulife/mux": "latest",
     "@manulife/mux-cds-icons": "latest",
     "@manulife/mux-logos": "latest",
     "axios": "^1.6.7",
+    "file-saver": "^2.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
