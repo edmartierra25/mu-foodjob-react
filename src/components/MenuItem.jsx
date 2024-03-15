@@ -23,12 +23,12 @@ const imageStyle = {
   maxWidth: '120px',
 };
 
-const MenuItem = ({ name, imageUrl }) => {
+const MenuItem = ({ id: product_id, name, imageUrl }) => {
 
   const navigate = useNavigate();
 
   const handleGotoProduct = () => {
-    navigate('/add-to-cart');
+    navigate(`/add-to-cart?product_id=${product_id}`);
   };
 
   return (

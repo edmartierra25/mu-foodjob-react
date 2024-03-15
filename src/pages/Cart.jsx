@@ -1,36 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { H1, P, Stack, colors, Button, PlusMinus } from '@manulife/mux';
 import MenuItem from 'src/components/MenuItem';
 import * as CDS from '@manulife/mux-cds-icons';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      user_id: 1,
-      product_id: 1,
-      product_name: "Pancit Guisado",
-      product_imageUrl: 'http://localhost:3001/images/restaurants/kuya-z.jpg',
-      count: 2
-    },
-    {
-      id: 2,
-      user_id: 1,
-      product_id: 1,
-      product_name: "Pancit Guisado",
-      product_imageUrl: 'http://localhost:3001/images/restaurants/kuya-z.jpg',
-      count: 2
-    }
-  ]);
+  const [cart, setCart] = useState([]);
+  const [user_id] = useState(1);
 
   const handleConfirmCart = () => {
     console.log("handleConfirmCart");
   };
 
   const handleCancelCart = () => {
-    console.log("handleCancelCart");
     navigate('/view-restaurants');
   };
 
@@ -38,6 +22,12 @@ const Cart = () => {
     cart[index].count = newValue;
     setCart([...cart]);
   }
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/cart?user_id=${user_id}`).then(response => {
+      setCart(response.data);
+    });
+  }, []);
 
   return (
     <Stack direction="column" align="flex-between">
@@ -49,8 +39,8 @@ const Cart = () => {
             return (
             <Stack key={item.id} direction="row" gap="10rem" style={{ paddingLeft: "10px" }}>
               <Stack direction="row">
-                <MenuItem imageUrl={item.product_imageUrl}/>
-                <P>{item.product_name}</P>
+                <MenuItem imageUrl={item.imageUrl}/>
+                <P>{item.name}</P>
               </Stack>
               <Stack direction="row" align="flex-end">
                 <PlusMinus value={item.count} onChange={(newValue) => handleSetCount(newValue, index)} />
